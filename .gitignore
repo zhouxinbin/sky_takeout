@@ -1,0 +1,23 @@
+*.class
+*Test.java
+**/test/
+
+# macOS
+.DS_Store
+
+# IDE
+.idea/
+*.iml
+.vscode/
+
+# Maven
+**/target/
+
+# Logs
+*.log
+**/logs/
+
+# 临时文件
+*~
+*.swp
+*.tmp
