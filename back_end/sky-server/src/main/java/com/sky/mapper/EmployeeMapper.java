@@ -45,8 +45,10 @@ public interface EmployeeMapper {
     void update(Employee employee);
 
     /**
-     * 更新员工状态（只更新 status、update_time、update_user）
-     * @param employee
+     * 根据 ID 查询员工信息
+     * @param id
+     * @return
      */
-    void updateStatus(Employee employee);
+    @Select("select * from employee where id = #{id}")
+    Employee getById(Long id);
 }
