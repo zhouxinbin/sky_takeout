@@ -104,5 +104,21 @@ public class EmployeeServiceImpl implements EmployeeService {
         return new PageResult(total, result);
     }
 
+    /**
+     * 员工状态切换 实现
+     * @param status
+     * @param id
+     */
+    @Override
+    public void statusChange(Integer status, Long id) {
+        Employee employee = Employee.builder()
+                .id(id)
+                .status(status)
+                .updateTime(LocalDateTime.now())
+                .updateUser(BaseContext.getCurrentId())
+                .build();
+        employeeMapper.updateStatus(employee);
+    }
+
 
 }

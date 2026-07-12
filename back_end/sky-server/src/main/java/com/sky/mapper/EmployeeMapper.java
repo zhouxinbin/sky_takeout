@@ -37,4 +37,16 @@ public interface EmployeeMapper {
     // IDEA 安装 MybatisX 插件之后 option + enter 快捷键 生成 SQL 语句到 EmployeeMapper.XML 文件
     // 调用 EmployeeMapper.xml 文件中的 pageQuery SQL 语句
     Page<Employee> pageQuery(EmployeePageQueryDTO employeePageQueryDTO);
+
+    /**
+     * 动态修改
+     * @param employee
+     */
+    void update(Employee employee);
+
+    /**
+     * 更新员工状态（只更新 status、update_time、update_user）
+     * @param employee
+     */
+    void updateStatus(Employee employee);
 }
