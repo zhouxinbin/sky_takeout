@@ -32,6 +32,7 @@ public class Employee implements Serializable {
 
     private Integer status;
 
+    // 格式化时间日期格式 美化前端显示效果
     //@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime createTime;
 
