@@ -1,9 +1,11 @@
 package com.sky.controller.admin;
 
 import com.sky.dto.CategoryDTO;
+import com.sky.dto.CategoryPageQueryDTO;
 import com.sky.dto.DishDTO;
 import com.sky.dto.EmployeeLoginDTO;
 import com.sky.properties.JwtProperties;
+import com.sky.result.PageResult;
 import com.sky.result.Result;
 import com.sky.service.CategoryService;
 import com.sky.service.EmployeeService;
@@ -11,10 +13,7 @@ import com.sky.vo.EmployeeLoginVO;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * 分类管理
@@ -40,5 +39,17 @@ public class CategoryController {
         log.info("新建分类：{}", categoryDTO);
         categoryService.insert(categoryDTO);
         return Result.success();
+    }
+
+    /**
+     * 分页查询分类
+     * @param categoryPageQueryDTO
+     * @return
+     */
+    @GetMapping("/page")
+    @ApiOperation("分页查询分类")
+    public Result<PageResult> page(CategoryPageQueryDTO categoryPageQueryDTO) {
+        log.info("分页查询分类：{}", categoryPageQueryDTO);
+        return Result.success(categoryService.page(categoryPageQueryDTO));
     }
 }
