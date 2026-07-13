@@ -52,4 +52,18 @@ public class CategoryController {
         log.info("分页查询分类：{}", categoryPageQueryDTO);
         return Result.success(categoryService.page(categoryPageQueryDTO));
     }
+
+    /**
+     * 修改分类状态
+     * @param status
+     * @param id
+     * @return
+     */
+    @PostMapping("/status/{status}")
+    @ApiOperation("修改分类状态")
+    public Result updateStatus(@PathVariable Integer status, Long id) {
+        log.info("修改分类状态：{}, {}", status, id);
+        categoryService.updateStatus(status, id);
+        return Result.success();
+    }
 }
