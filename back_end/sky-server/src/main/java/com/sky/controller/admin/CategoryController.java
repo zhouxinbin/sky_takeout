@@ -2,14 +2,10 @@ package com.sky.controller.admin;
 
 import com.sky.dto.CategoryDTO;
 import com.sky.dto.CategoryPageQueryDTO;
-import com.sky.dto.DishDTO;
-import com.sky.dto.EmployeeLoginDTO;
 import com.sky.properties.JwtProperties;
 import com.sky.result.PageResult;
 import com.sky.result.Result;
 import com.sky.service.CategoryService;
-import com.sky.service.EmployeeService;
-import com.sky.vo.EmployeeLoginVO;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,8 +21,6 @@ import org.springframework.web.bind.annotation.*;
 public class CategoryController {
     @Autowired
     private CategoryService categoryService;
-    @Autowired
-    private JwtProperties jwtProperties;
 
     /**
      * 新建分类
@@ -77,6 +71,19 @@ public class CategoryController {
     public Result update(@RequestBody CategoryDTO categoryDTO) {
         log.info("修改分类：{}", categoryDTO);
         categoryService.update(categoryDTO);
+        return Result.success();
+    }
+
+    /**
+     * 删除分类
+     * @param id
+     * @return
+     */
+    @DeleteMapping
+    @ApiOperation("删除分类")
+    public Result delete(Long id) {
+        log.info("删除分类：{}", id);
+        categoryService.delete(id);
         return Result.success();
     }
 }
