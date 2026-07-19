@@ -1,7 +1,10 @@
-**/target/
-.idea
-*.iml
+# Java
 *.class
 *Test.java
 **/test/
-application-dev.yml
+
+# Maven
+**/target/
+
+# 敏感配置
+**/application-dev.yml
